@@ -7,11 +7,11 @@
   </head>
   <body>
     <form method="post">
-      {% csrf_token %}
-       {{ form.as_p }}
-      <button type="submit">Login</button>
+      {% csrf_token %} 
+      {{ form.as_p }}
+      <button type="submit">SignUp</button>
 
-      <a href="{% url 'sign_up' %}">SignUp</a>
+      <a href="{% url 'sign_in' %}">SignIn</a>
     </form>
   </body>
 </html>
