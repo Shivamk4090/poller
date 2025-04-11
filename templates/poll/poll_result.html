@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">  <!-- width -->
+      <div class="card shadow-lg p-4 rounded-4">
+        <h2 class="mb-4 text-center">{{ object.question }}</h2>
+
+        {% for option in options %}
+          <div class="mb-3">
+            <strong>{{ option.text }}</strong>
+            <div class="progress">
+              <div class="progress-bar bg-info" role="progressbar"
+                   style="width: {{ option.percent }}%;"
+                   aria-valuenow="{{ option.vote_count }}"
+                   aria-valuemin="0"
+                   aria-valuemax="{{ total_votes }}">
+                {{ option.vote_count }} vote{{ option.vote_count|pluralize }} ({{ option.percent }}%)
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        <a href="{% url 'home' %}" class="btn btn-outline-primary mt-4 w-100">← Back to Polls</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -9,6 +9,9 @@ class Poll(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField(null=True)
 
+    def get_choices(self):
+        return self.option_set.all()
+
 class Option(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     text = models.CharField(max_length=255)
