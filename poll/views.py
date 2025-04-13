@@ -30,9 +30,11 @@ class CreatePoll(CreateView):
 
 
     def form_valid(self, form):
+
         context = self.get_context_data()
         formset = context['formset']
-        if formset.is_valid():
+
+        if form.is_valid()  and formset.is_valid():
             
             form.instance.created_by = self.request.user
             self.object = form.save()
